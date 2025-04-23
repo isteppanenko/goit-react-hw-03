@@ -1,0 +1,36 @@
+.contact {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  max-width: 200px;
+}
+
+.contactDetails {
+  flex-grow: 1;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+}
+
+.contactName {
+  margin: 0;
+  font-weight: bold;
+}
+
+.contactNumber {
+  margin: 0;
+}
+
+.deleteButton {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
