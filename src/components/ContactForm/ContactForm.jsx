@@ -1,19 +1,22 @@
+import css from './ContactForm.module.css';
 const ContactForm = () => {
   return (
     <>
-      <form action="">
-        <label htmlFor="fname">Name</label>
-        <br />
-        <input type="text" id="fname" name="fname" />
-        <br />
-        <label htmlFor="phone" id="phone" name="phone">
-          Phone
-        </label>
-        <br />
-        <input type="text" />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
+      <div className={css.container}>
+        <form className={css.form} action="">
+          <label htmlFor="fname">Name</label>
+          <input type="text" id="fname" name="fname" />
+          <label htmlFor="phone" id="phone" name="phone">
+            Phone
+          </label>
+          <input type="text" />
+          <input
+            className={css.submitButton}
+            type="submit"
+            value="Add contact"
+          />
+        </form>
+      </div>
     </>
   );
 };
