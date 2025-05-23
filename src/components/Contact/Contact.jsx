@@ -13,7 +13,7 @@ const Contact = ({ contact }) => {
 
         <div className={css.contactRow}>
           <PhoneIcon style={{ fontSize: 20, marginRight: '5px' }} />
-          <p className={css.contactNumber}>{contact.number}</p>
+          <p className={css.contactNumber}>{contact.phone}</p>
         </div>
       </div>
       <button className={css.deleteButton}>Delete</button>

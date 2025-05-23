@@ -5,15 +5,20 @@ import contactList from './assets/contactList.json';
 import { useState } from 'react';
 
 const App = () => {
+  const [contact, setContact] = useState(contactList);
   const [filter, setFilter] = useState('');
-
+  const addContact = (newContact) => {
+    setContact((prev) => {
+      return [...prev, newContact];
+    });
+  };
   return (
     <>
       <p>{filter}</p>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contactsList={contactList} />
+      <ContactList contactsList={contact} />
     </>
   );
 };
