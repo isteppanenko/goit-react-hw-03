@@ -12,13 +12,18 @@ const App = () => {
       return [...prev, newContact];
     });
   };
+  const deleteContact = (taskId) => {
+    setContact((prev) => {
+      return prev.filter((contact) => contact.id !== taskId);
+    });
+  };
   return (
     <>
       <p>{filter}</p>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contactsList={contact} />
+      <ContactList contactsList={contact} onDelete={deleteContact} />
     </>
   );
 };
