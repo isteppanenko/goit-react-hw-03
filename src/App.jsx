@@ -17,13 +17,15 @@ const App = () => {
       return prev.filter((contact) => contact.id !== taskId);
     });
   };
+  const filteredContacts = contact.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase()),
+  );
   return (
     <>
-      <p>{filter}</p>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contactsList={contact} onDelete={deleteContact} />
+      <SearchBox filter={filter} onFilter={setFilter} />
+      <ContactList contactsList={filteredContacts} onDelete={deleteContact} />
     </>
   );
 };
