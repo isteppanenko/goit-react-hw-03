@@ -1,28 +1,41 @@
 import css from './ContactForm.module.css';
+import { useId } from 'react';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+
+const initialValues = {
+  name: '',
+  phone: '',
+};
+
 const ContactForm = ({ onAdd }) => {
-  const handlSubmit = (e) => {
-    e.preventDefault();
-    onAdd({
+  const nameFieldId = useId();
+  const phoneFieldId = useId();
+  const handlSubmit = (values, actions) => {
+    const newContact = {
+      ...values,
       id: Date.now(),
-      name: e.target.elements.fname.value,
-      phone: e.target.elements.fphone.value,
-    });
-    e.target.reset();
+    };
+    onAdd(newContact);
+    actions.resetForm();
   };
   return (
     <>
-      <div className={css.container}>
-        <form className={css.form} onSubmit={handlSubmit}>
-          <label htmlFor="fname">Name</label>
-          <input type="text" id="fname" name="fname" />
-          <label htmlFor="phone">Phone</label>
-          <input type="text" id="fphone" name="fphone" />
-          <button className={css.submitButton} type="submit">
-            Add contact
-          </button>
-        </form>
-      </div>
+      <Formik initialValues={initialValues} onSubmit={handlSubmit}>
+        <div className={css.container}>
+          <Form className={css.form}>
+            <label htmlFor={nameFieldId}>Name</label>
+            <Field type="text" name="name" />
+            <label htmlFor={phoneFieldId}>Phone</label>
+            <Field type="text" name="phone" />
+            <button type="submit" className={css.submitButton}>
+              Submit
+            </button>
+          </Form>
+        </div>
+      </Formik>
     </>
   );
 };
+
 export default ContactForm;
